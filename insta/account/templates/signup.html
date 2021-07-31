@@ -5,12 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 합쳐지고 최소화된 최신 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <title>Document</title>
 
     <style>
         .contents{
@@ -38,20 +33,11 @@
             width: 100%;
             text-align: center;
         }
-        .go_reigster_box{
-            width: 100%;
-            margin: 5em;
-        }
-        .register_textline{
-            text-align: center;
-            display: inline;
-            vertical-align: middle;
-        }
-        .register_btn{
-            font-weight: bold;
+        form > th{
+
         }
     </style>
-    <title>Document</title>
+
 </head>
 
 <body>
@@ -60,14 +46,18 @@
         <div class="login">
             <div class="input_box">
                 <h1 class="pageTitle">instagram</h1>
-                <form action="{%url 'login'%}" method="POST">
+                <p>친구들의 사진과 동영상을 보려면 가입하세요.</p>
+                <hr>
+                <form action="{%url 'signup'%}" method="POST">
                     {%csrf_token%}
-                    {{form.as_p}}
-                    <button type="submit" class="btn btn-default inputs loginBtn">Login</button>
+                    <table>
+                        {{form.as_table}}
+                    </table>
+                    <button type="submit" class="btn btn-default inputs loginBtn">signup</button>
                 </form>
             </div>
             <div class="go_register_box">
-                <p class="register_textline">계정이 없으신가요? <a class="resgister_btn" href="{%url 'signup'%}">가입하기</a></p>
+                <p class="register_textline">계정이 있으신가요? <a class="resgister_btn" href="{%url 'login'%}">로그인</a></p>
             </div>
         </div>
     </div>
