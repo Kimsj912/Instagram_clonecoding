@@ -13,61 +13,94 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
     <style>
-        .contents{
-            display: grid;
-            grid-template-columns: 2fr 3fr 2fr;
+        html{
+            background-color: #fafafa;
+        }
+        .contents {
+            position: absolute;
+            display: table;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%
+        }
+
+        .inner_layout{
+            position: absolute;
+            top:0;right:0;bottom:0;left:0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: -webkit-flex;
+            -webkit-align-item: center;
+            -webkit-justify-content: center;
         }
 
         .login {
-            max-width: 25%;
-            min-width: 25em;
+            display: inline-block;
+            
+            background-color:rgba(var(--d87,255,255,255),1);
+            min-width:350px;
+            width: 20%;
 
-            display: grid;
-            grid-template-rows: 5fr 1fr;
-
+            min-height: 60%;
+            height: 60%;
+            margin: -12% 0 0 -10px; 
 
         }
-        .pageTitle{
+
+        .pageTitle {
             text-align: center;
             margin: 1em;
+            color: rgba(var(--i1d,38,38,38),1);
+
         }
-        .loginBtn{
+
+        .loginBtn {
             width: 100%;
+            background-color:  #00B0FB;
+
         }
-        .inputs{
+
+        .inputs {
             width: 100%;
             text-align: center;
         }
-        .go_reigster_box{
+
+        .go_reigster_box {
             width: 100%;
             margin: 5em;
         }
-        .register_textline{
+
+        .register_textline {
             text-align: center;
             display: inline;
             vertical-align: middle;
         }
-        .register_btn{
+
+        .register_btn {
             font-weight: bold;
         }
     </style>
-    <title>Document</title>
+    <title>로그인 • Instagram</title>
 </head>
 
 <body>
     <div class="contents">
-        <div class="empty"></div>
-        <div class="login">
-            <div class="input_box">
-                <h1 class="pageTitle">instagram</h1>
-                <form action="{%url 'login'%}" method="POST">
-                    {%csrf_token%}
-                    {{form.as_p}}
-                    <button type="submit" class="btn btn-default inputs loginBtn">Login</button>
-                </form>
-            </div>
-            <div class="go_register_box">
-                <p class="register_textline">계정이 없으신가요? <a class="resgister_btn" href="{%url 'signup'%}">가입하기</a></p>
+        <div class="inner_layout">
+            <div class="login">
+                <div class="input_box">
+                    <h1 class="pageTitle">instagram</h1>
+                    <form action="{%url 'login'%}" method="POST">
+                        {%csrf_token%}
+                        {{form.as_p}}
+                        <button type="submit" class="btn btn-default inputs loginBtn">Login</button>
+                    </form>
+                </div>
+                <div class="go_register_box">
+                    <p class="register_textline">계정이 없으신가요? <a class="resgister_btn" href="{%url 'signup'%}">가입하기</a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
