@@ -1,110 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 합쳐지고 최소화된 최신 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-    <style>
-        html{
-            background-color: #fafafa;
-        }
-        .contents {
-            position: absolute;
-            display: table;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%
-        }
-
-        .inner_layout{
-            position: absolute;
-            top:0;right:0;bottom:0;left:0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            display: -webkit-flex;
-            -webkit-align-item: center;
-            -webkit-justify-content: center;
-        }
-
-        .login {
-            display: inline-block;
-            
-            background-color:rgba(var(--d87,255,255,255),1);
-            min-width:350px;
-            width: 20%;
-
-            min-height: 60%;
-            height: 60%;
-            margin: -12% 0 0 -10px; 
-
-        }
-
-        .pageTitle {
-            text-align: center;
-            margin: 1em;
-            color: rgba(var(--i1d,38,38,38),1);
-
-        }
-
-        .loginBtn {
-            width: 100%;
-            background-color:  #00B0FB;
-
-        }
-
-        .inputs {
-            width: 100%;
-            text-align: center;
-        }
-
-        .go_reigster_box {
-            width: 100%;
-            margin: 5em;
-        }
-
-        .register_textline {
-            text-align: center;
-            display: inline;
-            vertical-align: middle;
-        }
-
-        .register_btn {
-            font-weight: bold;
-        }
-    </style>
-    <title>로그인 • Instagram</title>
-</head>
-
-<body>
-    <div class="contents">
-        <div class="inner_layout">
-            <div class="login">
-                <div class="input_box">
+<div class="contents">
+    <div class="inner_layout">
+        <div class="login">
+            <div class="input_box">
+                <div class="top_box">
                     <h1 class="pageTitle">instagram</h1>
+                </div>
+                <div class="mid_box">
                     <form action="{%url 'login'%}" method="POST">
                         {%csrf_token%}
-                        {{form.as_p}}
-                        <button type="submit" class="btn btn-default inputs loginBtn">Login</button>
+                        <table>
+                            {{form.as_table}}
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <td>
+                                        <input type="submit" class="btn btn-default inputs loginBtn" value="로그인">
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </form>
                 </div>
                 <div class="go_register_box">
+                    <div class="hr-sect">또는</div>
                     <p class="register_textline">계정이 없으신가요? <a class="resgister_btn" href="{%url 'signup'%}">가입하기</a>
                     </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-</body>
-
-</html>
+{% endblock %}

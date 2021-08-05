@@ -1,67 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>가입하기 • Instagram</title>
-
-    <style>
-        .contents{
-            display: grid;
-            grid-template-columns: 2fr 3fr 2fr;
-        }
-
-        .login {
-            max-width: 25%;
-            min-width: 25em;
-
-            display: grid;
-            grid-template-rows: 5fr 1fr;
-
-
-        }
-        .pageTitle{
-            text-align: center;
-            margin: 1em;
-        }
-        .loginBtn{
-            width: 100%;
-        }
-        .inputs{
-            width: 100%;
-            text-align: center;
-        }
-        form > th{
-            visibility: hidden;
-        }
-    </style>
-
-</head>
-
-<body>
-    <div class="contents">
-        <div class="empty"></div>
+<div class="contents">
+    <div class="inner_layout">
         <div class="login">
             <div class="input_box">
-                <h1 class="pageTitle">instagram</h1>
-                <p>친구들의 사진과 동영상을 보려면 가입하세요.</p>
-                <hr>
-                <form action="{%url 'signup'%}" method="POST">
-                    {%csrf_token%}
-                    <table>
-                        {{form.as_table}} 
-                    </table>
-                    <button type="submit" class="btn btn-default inputs loginBtn">signup</button>
-                </form>
-            </div>
-            <div class="go_register_box">
-                <p class="register_textline">계정이 있으신가요? <a class="resgister_btn" href="{%url 'login'%}">로그인</a></p>
+                <div class="top_box">
+                    <h1 class="pageTitle">instagram</h1>
+                    <p class="page_descriptrion">친구들의 사진과 동영상을 보려면 가입하세요.</p>
+                </div>
+                <div class="mid_box">
+                    <form action="{%url 'signup'%}" method="POST">
+                        {%csrf_token%}
+                        <table>
+                            {{form.as_table}}
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <td>
+                                        <input type="submit" class="btn btn-default inputs loginBtn" value="가입">
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+                <div class="go_register_box">
+                    <div class="hr-sect">또는</div>
+                    <p class="register_textline">계정이 있으신가요? <a class="resgister_btn" href="{%url 'login'%}">로그인</a></p>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-</body>
-
-</html>
+{% endblock %}
