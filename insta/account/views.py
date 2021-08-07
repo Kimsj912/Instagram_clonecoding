@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse
 from django.http import HttpResponse
-from .forms import UserForm ,LoginForm 
+from .forms import SignUpForm ,LoginForm 
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -12,9 +12,9 @@ def home_view(request):
 def login_view(request):
     if request.method=='POST' :
         form = LoginForm(request.POST)
-        username=request.POST['username']
+        email=request.POST['email']
         password=request.POST['password']
-        user=authenticate(username=username, password=password)
+        user=authenticate(email=email, password=password)
         if user is not None : #user가 존재한다면
             login(request,user)
             return redirect("home")
@@ -30,11 +30,11 @@ def logout_view(request):
     
 def signup_view(request):
     if request.method=='POST':
-        form = UserForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             user=form.save()
             login(request,user)
         return redirect('home')
     else :
-        form=UserForm()
+        form=SignUpForm()
         return render(request, 'signup.html',{'form':form})

@@ -1,9 +1,9 @@
 from django import forms
-from .models import userInfo
+from .models import MyUser
 
-class UserForm(forms.ModelForm):
+class SignUpForm(forms.ModelForm):
     class Meta:
-        model=userInfo
+        model=MyUser
         fields =['email','name','username','password']
     
     def __init__(self, *args, **kwargs):
@@ -16,7 +16,7 @@ class UserForm(forms.ModelForm):
 
 class LoginForm(forms.ModelForm):
     class Meta:
-        model = userInfo
+        model = MyUser
         fields = ['email', 'password']
 
     def __init__(self, *args, **kwargs):
